@@ -1,6 +1,6 @@
 # README
 
-The resources folder contains documentation for the APIs (Swagger documentation, Postman collection and Bruno Collection)
+The resources folder contains documentation for the APIs (Swagger documentation, Postman collection and Bruno collection)
 
 To run this application:
 1. Clone this to your machine
