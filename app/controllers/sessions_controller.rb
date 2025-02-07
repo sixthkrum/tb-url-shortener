@@ -11,7 +11,9 @@ class SessionsController < ApplicationController
       end
 
       format.json do
-        return render json: { data: {}, errors: [] }, status: :no_content
+        return render json: {
+          data: { message: "You might be unauthenticated." }, errors: []
+        }, status: :bad_request
       end
     end
   end
@@ -19,7 +21,7 @@ class SessionsController < ApplicationController
   def create
     redirect_to root_url if authenticated? && request.format.html?
 
-    user = User.authenticate_by(params.permit(:email_address, :password))
+    user = User.authenticate_by(session_params)
 
     if user
       respond_to do |format|
@@ -40,7 +42,7 @@ class SessionsController < ApplicationController
         return redirect_to new_session_path, alert: error_message
       end
       format.json do
-        return render json: { data: {}, errors: [ { message: error_message } ] }, status: :bad_request
+        return render json: { data: {}, errors: [{ message: error_message }] }, status: :bad_request
       end
     end
   end
@@ -48,5 +50,11 @@ class SessionsController < ApplicationController
   def destroy
     terminate_session
     redirect_to new_session_path
+  end
+
+  private
+
+  def session_params
+    params.expect(user: %i[ email_address password ])
   end
 end
