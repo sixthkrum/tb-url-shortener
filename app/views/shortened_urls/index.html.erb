@@ -8,11 +8,10 @@
   </tr>
   <% @shortened_urls.each do |s| %>
   <tr>
-    <% short_url = shortened_url_url(s.short_slug) %>
-    <td><a href="<%=short_url%>"><%=short_url%></a></td>
-    <td><a href="<%=s.original_url%>"><%=s.original_url%></a></td>
-    <td><%=s.created_at%></td>
-    <td><%=button_to("Delete", shortened_url_path(s.id), method: :delete) %></td>
+    <td><a href="<%=s[:shortened_url]%>"><%=s[:shortened_url]%></a></td>
+    <td><a href="<%=s[:original_url]%>"><%=s[:original_url]%></a></td>
+    <td><%=s[:created_at]%></td>
+    <td><%=button_to("Delete", shortened_url_path(s[:id]), method: :delete) %></td>
   </tr>
   <% end %>
   </tbody>

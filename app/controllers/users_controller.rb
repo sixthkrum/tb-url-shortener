@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         end
 
         format.json do
-          return render json: { data: { message: "Signed up successfully" }, errors: [] }, status: :no_content
+          return render json: { data: { message: "Signed up successfully" }, errors: [] }, status: :ok
         end
       end
     end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       end
 
       format.json do
-        return render json: { data: {}, errors: [ { message: error_message } ] }, status: :no_content
+        return render json: { data: {}, errors: [ { message: error_message } ] }, status: :bad_request
       end
     end
   end

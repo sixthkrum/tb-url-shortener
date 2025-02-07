@@ -39,7 +39,7 @@ module Authentication
     # through inspecting the type of token server side
     case token_type
     when "Bearer"
-      User.authenticate_by_jwt(token_value)
+      Current.user = User.authenticate_by_jwt(token_value)
     else
       nil
     end
