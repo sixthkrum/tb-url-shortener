@@ -16,7 +16,7 @@ class ShortenedUrlsController < ApplicationController
 
     if shortened_url.save
       return redirect_to new_shortened_url_path,
-                         notice: "Shortened URL created, #{shortened_url_url(Base64.urlsafe_encode64(shortened_url.id.to_s))}"
+                         notice: "URL shortened: #{shortened_url_url(Base64.urlsafe_encode64(shortened_url.id.to_s))}"
     end
 
     redirect_to new_shortened_url_path,
