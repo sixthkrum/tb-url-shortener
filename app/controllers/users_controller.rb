@@ -35,7 +35,15 @@ class UsersController < ApplicationController
   end
 
   def new
-    redirect_to root_url if authenticated?
+    respond_to do |format|
+      format.html do
+        redirect_to root_url if authenticated?
+      end
+
+      format.json do
+        return render json: { data: {}, errors: [] }, status: :bad_request
+      end
+    end
   end
 
   private

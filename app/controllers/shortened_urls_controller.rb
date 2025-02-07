@@ -44,7 +44,15 @@ class ShortenedUrlsController < ApplicationController
     end
   end
 
-  def new; end
+  def new
+    respond_to do |format|
+      format.html do; end
+
+      format.json do
+        return render json: { data: {}, errors: [] }, status: :bad_request
+      end
+    end
+  end
 
   def destroy
     deletion_count = Current.user.shortened_urls.delete_by(id: params[:id])
