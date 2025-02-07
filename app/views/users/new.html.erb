@@ -5,8 +5,9 @@
   <%= form.email_field "user[email_address]", required: true, autofocus: true, placeholder: "Enter your email address", value: params[:email_address] %><br>
   <%= form.password_field "user[password]", required: true, placeholder: "Enter your password", minlength: 10, maxlength: 72, onKeyUp: "dynamicPasswordValidation();" %><br>
   <%= form.password_field :password_confirmation, required: true, placeholder: "Confirm your password", minlength: 10, maxlength: 72, onKeyUp: "dynamicPasswordValidation();" %><br>
-  <%= form.submit "Sign Up" %>
+  <%= form.submit "Create Account" %>
 <% end %>
+<%= button_to("Sign in instead", new_session_path, method: :get)%>
 <br>
 
 <script>

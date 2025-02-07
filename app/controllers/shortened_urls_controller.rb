@@ -3,7 +3,8 @@
 class ShortenedUrlsController < ApplicationController
   include Authentication
 
-  allow_unauthenticated_access only: %i[ show create new ]
+  allow_unauthenticated_access only: %i[ show ]
+
   def show
     shortened_url = ShortenedUrl.find_by_id(Base64.urlsafe_decode64(params[:id]))
 
@@ -11,12 +12,11 @@ class ShortenedUrlsController < ApplicationController
   end
 
   def create
-    # shortened_url = Current.session.user.shortened_urls.new(shortened_url_params)
-    shortened_url = ShortenedUrl.new(shortened_url_params)
+    shortened_url = Current.session.user.shortened_urls.new(shortened_url_params)
 
     if shortened_url.save
       return redirect_to new_shortened_url_path,
-                         notice: "URL shortened: #{shortened_url_url(Base64.urlsafe_encode64(shortened_url.id.to_s))}"
+                         notice: "URL shortened: #{shortened_url_url(shortened_url.short_slug)}"
     end
 
     redirect_to new_shortened_url_path,
@@ -25,9 +25,15 @@ class ShortenedUrlsController < ApplicationController
 
   def new; end
 
-  def destroy; end
+  def destroy
+    Current.session.user.shortened_urls.delete(params[:id])
 
-  def index; end
+    redirect_back fallback_location: root_url
+  end
+
+  def index
+    @shortened_urls = Current.session.user.shortened_urls
+  end
 
   private
 

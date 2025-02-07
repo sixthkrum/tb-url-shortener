@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   # creating users without validating ownership of email for now as that is outside the scope
   def create
+    return redirect_to root_url if authenticated?
+
     user = User.new(user_params)
 
     return redirect_to new_session_path, notice: "Signed up successfully, please sign in" if user.save
@@ -13,7 +15,9 @@ class UsersController < ApplicationController
                 alert: "Failed to sign up, #{user.errors.full_messages.to_sentence}"
   end
 
-  def new; end
+  def new
+    redirect_to root_url if authenticated?
+  end
 
   private
 

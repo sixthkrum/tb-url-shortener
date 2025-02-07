@@ -22,7 +22,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <style>
+      table, th, td {
+          border:1px solid black;
+      }
+  </style>
+
   <body>
+    <% if authenticated? %>
+      <%= button_to("Logout", session_path, method: :delete) %>
+      <%= button_to("Shortened URLS", shortened_urls_path, method: :get) %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
