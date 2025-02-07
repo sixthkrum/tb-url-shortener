@@ -11,6 +11,10 @@ class User < ApplicationRecord
 
   validates :email_address, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
+  PASSWORD_MIN_LENGTH = 10
+  PASSWORD_MAX_LENGTH = 72
+  validates :password, presence: true, length: { within: PASSWORD_MIN_LENGTH..PASSWORD_MAX_LENGTH }
+
   def generate_jwt_hmac512(expires_in: (Time.now + 1.hours).to_i)
     JWT.encode({ exp: expires_in, sub: id, aud: JWT_AUD },
                Rails.application.credentials.jwt_secrets[:HS512],
