@@ -39,7 +39,7 @@ class User < ApplicationRecord
       decoded_token = JWT.decode(token, key, true, decode_options)
 
       User.find_by(id: decoded_token[0]["sub"])
-    rescue JWT::ExpiredSignature
+    rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
       nil
     end
   end
