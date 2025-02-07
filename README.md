@@ -9,8 +9,10 @@ To run this application:
 4. Run `bundle install` to get the gems installed
 5. Run `rails db:migrate` to get the database initialized
 6. To run tests: `rails t`
-7. To run the application: `rails s`
+7. To run the application: `rails s` and then go to your browser and open http://127.0.0.1:3000/
    1. The application opens to the "sign in" page, click the "sign up" button to create an account
    2. After signing up the application redirects to the "sign in" page, enter credentials there
    3. After signing in the application redirects to the URL shortening page, enter the URLs you want to shorten there
    4. The URL shortening page has a button to get to the listing page and to logout, the listing page has a list of all the shortened URLs
+
+IMPORTANT: this repo has the master key added to it, in the very unlikely event someone chooses to use this as a starting point for something, please regenerate the key and use different secrets.
