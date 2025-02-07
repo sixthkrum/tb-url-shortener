@@ -1,0 +1,222 @@
+{
+  "info": {
+    "name": "TB URL SHORTENER",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "bruno",
+      "event": []
+    },
+    {
+      "name": "register",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": null,
+        "description": "",
+        "url": {
+          "raw": "http://127.0.0.1:3000/users",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1:3000"
+          ],
+          "path": [
+            "users"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user\": {\n    \"email_address\": \"jej@gmail.com\",\n    \"password\": \"password12345\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "login",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": null,
+        "description": "",
+        "url": {
+          "raw": "http://127.0.0.1:3000/session",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1:3000"
+          ],
+          "path": [
+            "session"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user\": {\n    \"email_address\": \"jej@gmail.com\",\n    \"password\": \"password12345\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "create short url",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3Mzg5MjUwNzIsInN1YiI6NywiYXVkIjoidXNlciJ9.LzdmqiS2ctg7dwlHvCPy3Akbyy62wHsQHkcH0O3nJtjp0D0uyngJ5yd1nCMHFZVknQ5cWIX8Ukcy4BzZ0dekwg",
+            "type": "string"
+          }
+        },
+        "description": "",
+        "url": {
+          "raw": "http://127.0.0.1:3000/su",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1:3000"
+          ],
+          "path": [
+            "su"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"shortened_url\": {\n    \"original_url\": \"https://google.com\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "index",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3Mzg5MjUwNzIsInN1YiI6NywiYXVkIjoidXNlciJ9.LzdmqiS2ctg7dwlHvCPy3Akbyy62wHsQHkcH0O3nJtjp0D0uyngJ5yd1nCMHFZVknQ5cWIX8Ukcy4BzZ0dekwg",
+            "type": "string"
+          }
+        },
+        "description": "",
+        "url": {
+          "raw": "http://127.0.0.1:3000/su",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1:3000"
+          ],
+          "path": [
+            "su"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "delete",
+      "event": [],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3Mzg5MjUwNzIsInN1YiI6NywiYXVkIjoidXNlciJ9.LzdmqiS2ctg7dwlHvCPy3Akbyy62wHsQHkcH0O3nJtjp0D0uyngJ5yd1nCMHFZVknQ5cWIX8Ukcy4BzZ0dekwg",
+            "type": "string"
+          }
+        },
+        "description": "",
+        "url": {
+          "raw": "http://127.0.0.1:3000/su/19",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1:3000"
+          ],
+          "path": [
+            "su",
+            "19"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    }
+  ],
+  "variable": []
+}

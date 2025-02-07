@@ -31,7 +31,8 @@
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+# Committing this because this is not actually getting deployed anywhere
+#/config/master.key
 
 # ignore intellij files
 .idea

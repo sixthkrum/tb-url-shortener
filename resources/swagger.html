@@ -1,0 +1,740 @@
+<!doctype html>
+<html>
+  <head>
+    <title>URL Shortener Service</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>URL Shortener Service</h1>
+    <div class="app-desc"><p>This is a collection of APIs for a URL shortener service that does the following:</p>
+<ol>
+<li>User registration</li>
+<li>User authentication and token generation</li>
+<li>Shorten URLs (with user ownership)</li>
+<li>Return a list of all URLs shortened for a User</li>
+<li>Delete shortened URLs</li>
+</ol>
+</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="you@your-company.com">you@your-company.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/none-f22/tb-url-shortener/1.0.0</div>
+    <div class="license-info">Apache 2.0</div>
+    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Default">Default</a></h4>
+  <ul>
+  <li><a href="#deleteSuShortenedUrlId"><code><span class="http-method">delete</span> /su/{shortened_url_id}</code></a></li>
+  <li><a href="#getSu"><code><span class="http-method">get</span> /su</code></a></li>
+  <li><a href="#postSession"><code><span class="http-method">post</span> /session</code></a></li>
+  <li><a href="#postSu"><code><span class="http-method">post</span> /su</code></a></li>
+  <li><a href="#postUsers"><code><span class="http-method">post</span> /users</code></a></li>
+  </ul>
+
+  <h1><a name="Default">Default</a></h1>
+  <div class="method"><a name="deleteSuShortenedUrlId"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /su/{shortened_url_id}</code></pre></div>
+    <div class="method-summary">Delete shortened URL (<span class="nickname">deleteSuShortenedUrlId</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">shortened_url_id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of a shortened URL owned by the requesting user </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_3">inline_response_200_3</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : {
+    "deletion_count" : 0
+  },
+  "errors" : [ { }, { } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful responses, if the user does not own the resource they are trying to delete or if the resource does not exist then the number of deletions returned in the API is 0. This is done to protect the privacy of users.
+        <a href="#inline_response_200_3">inline_response_200_3</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Resource does not exist or is owned by someone else</div>
+    <pre class="example"><code>{&quot;data&quot;:{&quot;deletion_count&quot;:0},&quot;errors&quot;:[]}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Successfully deleted</div>
+    <pre class="example"><code>{&quot;data&quot;:{&quot;deletion_count&quot;:1},&quot;errors&quot;:[]}</code></pre>
+    <h4 class="field-label">400</h4>
+    Responses for unauthenticated requests
+        <a href="#Object">Object</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Unauthenticated</div>
+    <pre class="example"><code>{&quot;data&quot;:{&quot;message&quot;:&quot;You might be unauthenticated.&quot;},&quot;errors&quot;:[]}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getSu"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /su</code></pre></div>
+    <div class="method-summary">Get listing of shortened URLS (<span class="nickname">getSu</span>)</div>
+    <div class="method-notes">Get listing of created shortened URLs</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_1">inline_response_200_1</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : {
+    "shortened_urls" : [ {
+      "original_url" : "original_url",
+      "shortened_url" : "shortened_url",
+      "created_at" : "created_at",
+      "id" : 0
+    }, {
+      "original_url" : "original_url",
+      "shortened_url" : "shortened_url",
+      "created_at" : "created_at",
+      "id" : 0
+    } ]
+  },
+  "errors" : [ { }, { } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Listing successfully fetched
+        <a href="#inline_response_200_1">inline_response_200_1</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Listing without entries</div>
+    <pre class="example"><code>{&quot;data&quot;:{&quot;shortened_urls&quot;:[]},&quot;errors&quot;:[]}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Listing with entries</div>
+    <pre class="example"><code>{&quot;data&quot;:{&quot;shortened_urls&quot;:[{&quot;id&quot;:14,&quot;shortened_url&quot;:&quot;http://127.0.0.1:3000/su/MTQ&#x3D;&quot;,&quot;original_url&quot;:&quot;https://google.com&quot;,&quot;created_at&quot;:&quot;2025-02-07T07:50:00.421Z&quot;},{&quot;id&quot;:15,&quot;shortened_url&quot;:&quot;http://127.0.0.1:3000/su/MTU&#x3D;&quot;,&quot;original_url&quot;:&quot;https://google.com&quot;,&quot;created_at&quot;:&quot;2025-02-07T07:50:20.005Z&quot;},{&quot;id&quot;:16,&quot;shortened_url&quot;:&quot;http://127.0.0.1:3000/su/MTY&#x3D;&quot;,&quot;original_url&quot;:&quot;https://google.com&quot;,&quot;created_at&quot;:&quot;2025-02-07T07:51:13.968Z&quot;}]},&quot;errors&quot;:[]}</code></pre>
+    <h4 class="field-label">400</h4>
+    Responses for unauthenticated requests
+        <a href="#Object">Object</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Unauthenticated request</div>
+    <pre class="example"><code>{&quot;data&quot;:{&quot;message&quot;:&quot;You might be unauthenticated.&quot;},&quot;errors&quot;:[]}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postSession"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /session</code></pre></div>
+    <div class="method-summary">Login (<span class="nickname">postSession</span>)</div>
+    <div class="method-notes">Login using credentials, get a JWT token in return with expiry in 1 hour from the time of creation</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#session_body">session_body</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+            <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;user&quot; : {
+      &quot;email_address&quot; : &quot;jej@gmail.com&quot;,
+      &quot;password&quot; : &quot;password12345&quot;
+    }
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Response with token
+        <a href="#Object">Object</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Token generated</div>
+    <pre class="example"><code>{&quot;data&quot;:{&quot;token&quot;:&quot;eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3Mzg5MjE1NzYsInN1YiI6NCwiYXVkIjoidXNlciJ9.apsyxSB_b84mewLVynF_CDVvYTmE5w7OX6fXPNTm5acIDfGYBYyrReSoXNEWfpvKg2tAEnPWbC93OAjUc1jNRw&quot;},&quot;errors&quot;:[]}</code></pre>
+    <h4 class="field-label">400</h4>
+    Responses for invalid parameters and login credentials
+        <a href="#inline_response_400">inline_response_400</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Bad credentials</div>
+    <pre class="example"><code>{&quot;data&quot;:{},&quot;errors&quot;:[{&quot;message&quot;:&quot;Try another email address or password.&quot;}]}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Invalid Parameters</div>
+    <pre class="example"><code>{&quot;data&quot;:{},&quot;errors&quot;:[{&quot;message&quot;:&quot;Invalid parameters passed&quot;}]}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postSu"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /su</code></pre></div>
+    <div class="method-summary">Create shortened url (<span class="nickname">postSu</span>)</div>
+    <div class="method-notes">Send a long URL and get a short one in return, the requested URL must be a valid HTTP URL</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#su_body">su_body</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_2">inline_response_200_2</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : {
+    "shortened_url" : {
+      "shortened_url" : "shortened_url",
+      "id" : 0
+    }
+  },
+  "errors" : [ { }, { } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful shortened URL creation response
+        <a href="#inline_response_200_2">inline_response_200_2</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Successful creation of shortened URL</div>
+    <pre class="example"><code>{&quot;data&quot;:{&quot;shortened_url&quot;:{&quot;shortened_url&quot;:&quot;http://127.0.0.1:3000/su/MTY&#x3D;&quot;,&quot;id&quot;:16}},&quot;errors&quot;:[]}</code></pre>
+    <h4 class="field-label">400</h4>
+    Responses for unauthenticated, invalid requests or inability to create shortened URL
+        <a href="#Object">Object</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Invalid URL</div>
+    <pre class="example"><code>{&quot;data&quot;:{},&quot;errors&quot;:[{&quot;message&quot;:&quot;Original url is not a valid HTTP URL&quot;}]}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Unauthenticated request</div>
+    <pre class="example"><code>{&quot;data&quot;:{&quot;message&quot;:&quot;You might be unauthenticated.&quot;},&quot;errors&quot;:[]}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Invalid request</div>
+    <pre class="example"><code>{&quot;data&quot;:{},&quot;errors&quot;:[{&quot;message&quot;:&quot;Invalid parameters passed&quot;}]}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postUsers"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users</code></pre></div>
+    <div class="method-summary">Register (<span class="nickname">postUsers</span>)</div>
+    <div class="method-notes">Send the server a valid email address (https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address) and password to create a new user.
+Rate limited to 3 user creations per hour per IP.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#users_body">users_body</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+            <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;user&quot; : {
+      &quot;email_address&quot; : &quot;string&quot;,
+      &quot;password&quot; : &quot;string&quot;
+    }
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200">inline_response_200</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : { },
+  "errors" : [ {
+    "message" : "message"
+  }, {
+    "message" : "message"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Successful registration response
+        <a href="#inline_response_200">inline_response_200</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Successful registration</div>
+    <pre class="example"><code>{&quot;data&quot;:{&quot;message&quot;:&quot;Signed up successfully&quot;},&quot;errors&quot;:[]}</code></pre>
+    <h4 class="field-label">400</h4>
+    Error responses for existing email addresses and password length bounds
+        <a href="#inline_response_400">inline_response_400</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Password too long</div>
+    <pre class="example"><code>{&quot;data&quot;:{},&quot;errors&quot;:[{&quot;message&quot;:&quot;Failed to sign up, Password is too long and Password is too long (maximum is 72 characters)&quot;}]}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Email already in use</div>
+    <pre class="example"><code>{&quot;data&quot;:{},&quot;errors&quot;:[{&quot;message&quot;:&quot;Failed to sign up, Email address has already been taken&quot;}]}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Invalid parameters</div>
+    <pre class="example"><code>{&quot;data&quot;:{},&quot;errors&quot;:[{&quot;message&quot;:&quot;Invalid parameters passed&quot;}]}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: Password too short</div>
+    <pre class="example"><code>{&quot;data&quot;:{},&quot;errors&quot;:[{&quot;message&quot;:&quot;Failed to sign up, Password is too short (minimum is 10 characters)&quot;}]}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#ResponseObject"><code>ResponseObject</code></a></li>
+    <li><a href="#ResponseObject_errors"><code>ResponseObject_errors</code></a></li>
+    <li><a href="#ShortenedUrl"><code>ShortenedUrl</code> - ShortenedUrl</a></li>
+    <li><a href="#inline_response_200"><code>inline_response_200</code></a></li>
+    <li><a href="#inline_response_200_1"><code>inline_response_200_1</code></a></li>
+    <li><a href="#inline_response_200_1_data"><code>inline_response_200_1_data</code></a></li>
+    <li><a href="#inline_response_200_1_data_shortened_urls"><code>inline_response_200_1_data_shortened_urls</code></a></li>
+    <li><a href="#inline_response_200_2"><code>inline_response_200_2</code></a></li>
+    <li><a href="#inline_response_200_2_data"><code>inline_response_200_2_data</code></a></li>
+    <li><a href="#inline_response_200_2_data_shortened_url"><code>inline_response_200_2_data_shortened_url</code></a></li>
+    <li><a href="#inline_response_200_3"><code>inline_response_200_3</code></a></li>
+    <li><a href="#inline_response_200_3_data"><code>inline_response_200_3_data</code></a></li>
+    <li><a href="#inline_response_400"><code>inline_response_400</code></a></li>
+    <li><a href="#session_body"><code>session_body</code></a></li>
+    <li><a href="#su_body"><code>su_body</code></a></li>
+    <li><a href="#su_shortened_url"><code>su_shortened_url</code></a></li>
+    <li><a href="#users_body"><code>users_body</code></a></li>
+    <li><a href="#users_user"><code>users_user</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="ResponseObject"><code>ResponseObject</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">data (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">errors (optional)</div><div class="param-desc"><span class="param-type"><a href="#ResponseObject_errors">array[ResponseObject_errors]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ResponseObject_errors"><code>ResponseObject_errors</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ShortenedUrl"><code>ShortenedUrl</code> - ShortenedUrl</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">shortened_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">original_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200"><code>inline_response_200</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">data (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">errors (optional)</div><div class="param-desc"><span class="param-type"><a href="#ResponseObject_errors">array[ResponseObject_errors]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_1"><code>inline_response_200_1</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">data (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_1_data">inline_response_200_1_data</a></span>  </div>
+<div class="param">errors (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">array[Object]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_1_data"><code>inline_response_200_1_data</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">shortened_urls (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_1_data_shortened_urls">array[inline_response_200_1_data_shortened_urls]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_1_data_shortened_urls"><code>inline_response_200_1_data_shortened_urls</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">shortened_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">original_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2"><code>inline_response_200_2</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">data (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_data">inline_response_200_2_data</a></span>  </div>
+<div class="param">errors (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">array[Object]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2_data"><code>inline_response_200_2_data</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">shortened_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_data_shortened_url">inline_response_200_2_data_shortened_url</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2_data_shortened_url"><code>inline_response_200_2_data_shortened_url</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">shortened_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_3"><code>inline_response_200_3</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">data (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_3_data">inline_response_200_3_data</a></span>  </div>
+<div class="param">errors (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">array[Object]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_3_data"><code>inline_response_200_3_data</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">deletion_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_400"><code>inline_response_400</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">data (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">errors (optional)</div><div class="param-desc"><span class="param-type"><a href="#ResponseObject_errors">array[ResponseObject_errors]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="session_body"><code>session_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#users_user">users_user</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="su_body"><code>su_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">shortened_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#su_shortened_url">su_shortened_url</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="su_shortened_url"><code>su_shortened_url</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">original_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="users_body"><code>users_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#users_user">users_user</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="users_user"><code>users_user</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">email_address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

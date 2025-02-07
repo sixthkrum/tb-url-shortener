@@ -1,0 +1,178 @@
+{
+  "name": "TB URL SHORTENER",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "register",
+      "seq": 2,
+      "request": {
+        "url": "http://127.0.0.1:3000/users",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "accept",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"user\": {\n    \"email_address\": \"jej@gmail.com\",\n    \"password\": \"password12345\"\n  }\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "login",
+      "seq": 3,
+      "request": {
+        "url": "http://127.0.0.1:3000/session",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "accept",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"user\": {\n    \"email_address\": \"jej@gmail.com\",\n    \"password\": \"password12345\"\n  }\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "create short url",
+      "seq": 4,
+      "request": {
+        "url": "http://127.0.0.1:3000/su",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "accept",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"shortened_url\": {\n    \"original_url\": \"https://google.com\"\n  }\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3Mzg5MjUwNzIsInN1YiI6NywiYXVkIjoidXNlciJ9.LzdmqiS2ctg7dwlHvCPy3Akbyy62wHsQHkcH0O3nJtjp0D0uyngJ5yd1nCMHFZVknQ5cWIX8Ukcy4BzZ0dekwg"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "index",
+      "seq": 5,
+      "request": {
+        "url": "http://127.0.0.1:3000/su",
+        "method": "GET",
+        "headers": [
+          {
+            "name": "accept",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3Mzg5MjUwNzIsInN1YiI6NywiYXVkIjoidXNlciJ9.LzdmqiS2ctg7dwlHvCPy3Akbyy62wHsQHkcH0O3nJtjp0D0uyngJ5yd1nCMHFZVknQ5cWIX8Ukcy4BzZ0dekwg"
+          }
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "delete",
+      "seq": 6,
+      "request": {
+        "url": "http://127.0.0.1:3000/su/19",
+        "method": "DELETE",
+        "headers": [
+          {
+            "name": "accept",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "bearer",
+          "bearer": {
+            "token": "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3Mzg5MjUwNzIsInN1YiI6NywiYXVkIjoidXNlciJ9.LzdmqiS2ctg7dwlHvCPy3Akbyy62wHsQHkcH0O3nJtjp0D0uyngJ5yd1nCMHFZVknQ5cWIX8Ukcy4BzZ0dekwg"
+          }
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "TB URL SHORTENER",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
