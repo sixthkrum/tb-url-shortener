@@ -2,6 +2,7 @@
 
 class UsersController < ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
+  rate_limit to: 3, within: 1.hours, only: :create, with: -> { redirect_to new_user_url, alert: "Try again later." }
 
   # creating users without validating ownership of email for now as that is outside the scope
   def create
@@ -9,10 +10,28 @@ class UsersController < ApplicationController
 
     user = User.new(user_params)
 
-    return redirect_to new_session_path, notice: "Signed up successfully, please sign in" if user.save
+    if user.save
+      respond_to do |format|
+        format.html do
+          return redirect_to new_session_path, notice: "Signed up successfully, please sign in"
+        end
 
-    redirect_to new_user_path,
-                alert: "Failed to sign up, #{user.errors.full_messages.to_sentence}"
+        format.json do
+          return render json: { data: { message: "Signed up successfully" }, errors: [] }, status: :no_content
+        end
+      end
+    end
+
+    error_message = "Failed to sign up, #{user.errors.full_messages.to_sentence}"
+    respond_to do |format|
+      format.html do
+        return redirect_to new_user_path, alert: error_message
+      end
+
+      format.json do
+        return render json: { data: {}, errors: [ { message: error_message } ] }, status: :no_content
+      end
+    end
   end
 
   def new
