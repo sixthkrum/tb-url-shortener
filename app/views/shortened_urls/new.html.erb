@@ -1,0 +1,10 @@
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+
+<h1>URL Shortener</h1>
+
+<%= form_with url: shortened_urls_path do |form| %>
+  <%= form.label "shortened_url[original_url]", "Enter the URL you want to shorten" %><br>
+  <%= form.text_field "shortened_url[original_url]", required: true, autofocus: true %><br>
+  <%= form.submit "Create Shortened URL" %>
+<% end %>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
@@ -13,4 +15,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :shortened_urls, only: %i[ show create new destroy index ], path: "su"
+  resources :users, only: %i[ create ]
 end

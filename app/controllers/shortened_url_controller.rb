@@ -1,2 +1,0 @@
-class ShortenedUrlController < ApplicationController
-end
